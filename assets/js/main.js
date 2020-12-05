@@ -7,15 +7,18 @@
 (function($) {
   "use strict";
 
-  // Preloader (if the #preloader div exists)
-  $(window).on('load', function() {
-    if ($('#preloader').length) {
-      $('#preloader').delay(100).fadeOut('slow', function() {
-        $(this).remove();
-      });
-    }
-  });
-
+  
+/* Preloader */
+$(window).on('load', function() {
+  var preloaderFadeOutTime = 500;
+  function hidePreloader() {
+    var preloader = $('.spinner-wrapper');
+    setTimeout(function() {
+      preloader.fadeOut(preloaderFadeOutTime);
+    }, 500);
+  }
+  hidePreloader();
+});
   // Back to top button
   $(window).scroll(function() {
     if ($(this).scrollTop() > 100) {
